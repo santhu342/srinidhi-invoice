@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tax Invoice - Dynamic</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #000;
+      background: #e8e8e8;
+    }
+
+    /* ── EDITOR TOOLBAR ── */
+    .toolbar {
+      background: #1a3c6e;
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .toolbar span { font-weight: bold; font-size: 14px; margin-right: 6px; }
+    .toolbar button {
+      background: #f0a500;
+      color: #000;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .toolbar button:hover { background: #ffc107; }
+    .toolbar button.print-btn { background: #28a745; color: #fff; }
+    .toolbar button.print-btn:hover { background: #218838; }
+
+    /* ── PAGE ── */
+    .page {
+      width: 794px;
+      margin: 20px auto;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    /* ── HEADER/FOOTER IMAGE ── */
+    .header-img img, .footer-img img {
+      /* bottom: 0px; */
+      width: 100%;
+      display: block;
+    }
+    .img-placeholder {
+      width: 100%;
+      background: #f0f4ff;
+      border: 2px dashed #aac;
+      text-align: center;
+      padding: 22px 0;
+      font-size: 13px;
+      color: #557;
+      font-style: italic;
+    }
+
+    /* ── BODY ── */
+    .body { padding: 20px 36px 14px 36px; }
+
+    .invoice-title {
+      text-align: center;
+      font-size: 17px;
+      font-weight: bold;
+      text-decoration: underline;
+      margin-bottom: 14px;
+      letter-spacing: 1px;
+    }
+
+    /* ── META (Invoice No / Date) ── */
+    .invoice-meta {
+      text-align: right;
+      margin-bottom: 14px;
+      font-size: 12.5px;
+      line-height: 1.9;
+    }
+    .invoice-meta input {
+      border: none;
+      border-bottom: 1.5px dashed #aaa;
+      outline: none;
+      font-size: 12.5px;
+      font-family: Arial, sans-serif;
+      color: #000;
+      background: transparent;
+      text-align: right;
+      width: 130px;
+    }
+    .invoice-meta input:focus { border-bottom-color: #1a3c6e; background: #f0f7ff; }
+
+    /* ── PARTY TABLE ── */
+    .party-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 14px;
+      font-size: 12.5px;
+    }
+    .party-table th {
+      background: #dde6f5;
+      text-align: center;
+      font-weight: bold;
+      padding: 7px 8px;
+      border: 1px solid #888;
+      font-size: 13px;
+    }
+    .party-table td {
+      padding: 0;
+      border: 1px solid #888;
+      vertical-align: top;
+    }
+    .party-inner {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .party-inner tr { border: none; }
+    .party-inner td {
+      border: none;
+      padding: 5px 8px;
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .party-inner td.lbl {
+      font-weight: bold;
+      white-space: nowrap;
+      width: 82px;
+      color: #333;
+    }
+
+    /* ── NATURE / HSN ── */
+    .nature-section {
+      margin-bottom: 10px;
+      font-size: 12.5px;
+      line-height: 2;
+    }
+
+    /* ── LINE ITEMS TABLE ── */
+    .inv-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+    .inv-table th {
+      background: #dde6f5;
+      border: 1px solid #888;
+      padding: 7px 6px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .inv-table td {
+      border: 1px solid #888;
+      padding: 0;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .inv-table td input, .inv-table td select {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+      color: #000;
+      background: transparent;
+      text-align: center;
+      padding: 7px 5px;
+      height: 100%;
+    }
+    .inv-table td input:focus, .inv-table td select:focus {
+      background: #f0f7ff;
+    }
+    .inv-table td.particular-td input {
+      text-align: left;
+      padding-left: 8px;
+    }
+    .inv-table td.amt-td {
+      text-align: right;
+    }
+    .inv-table td.amt-td input {
+      text-align: right;
+      padding-right: 6px;
+    }
+    .inv-table td.calc-td {
+      text-align: right;
+      padding: 7px 8px;
+      font-size: 12px;
+      color: #222;
+    }
+    .inv-table tr.total-row td {
+      font-weight: bold;
+      background: #f5f8ff;
+      padding: 7px 8px;
+      font-size: 12.5px;
+    }
+    .inv-table tr.total-row td.lbl-td {
+      text-align: left;
+    }
+    .inv-table tr.total-row td.amt-td {
+      text-align: right;
+    }
+
+    /* delete row btn */
+    .del-btn {
+      background: #dc3545;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+      padding: 3px 7px;
+      font-weight: bold;
+    }
+    .del-btn:hover { background: #a71d2a; }
+    .inv-table td.action-td { padding: 4px 5px; }
+
+    /* ── PAYABLE BLOCK ── */
+    .payable-block {
+      border: 1px solid #888;
+      border-top: none;
+      padding: 9px 12px;
+      font-size: 12.5px;
+      background: #fafbff;
+      line-height: 1.9;
+    }
+    .payable-block .payable-line { font-weight: bold; }
+    .payable-block .words-line { color: #333; }
+
+    /* ── SIGNATORY ── */
+    .signatory {
+      text-align: right;
+      margin-top: 32px;
+      margin-bottom: 10px;
+      font-size: 12.5px;
+      line-height: 2;
+    }
+    .signatory .firm-name { font-weight: bold; }
+
+    /* ── ADD ROW BUTTON AREA ── */
+    .add-row-area {
+      margin: 8px 0 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .add-row-btn {
+      background: #1a3c6e;
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .add-row-btn:hover { background: #255fa3; }
+
+    /* ── PRINT STYLES ── */
+    @media print {
+      body { background: #fff; }
+      .toolbar, .add-row-area, .del-btn, .action-col { display: none !important; }
+      .page { box-shadow: none; margin: 0; }
+      .inv-table td input, .inv-table td select,
+      .invoice-meta input {
+        border: none !important;
+        background: transparent !important;
+        pointer-events: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ TOOLBAR ══ -->
+<div class="toolbar">
+  <span>🧾 Dynamic Tax Invoice</span>
+  <button onclick="addRow()">+ Add Particular</button>
+  <button class="print-btn" onclick="window.print()">🖨 Print / Save PDF</button>
+</div>
+
+<div class="page">
+
+  <!-- HEADER IMAGE -->
+  <div class="header-img">
+    <img src="header.png" alt="Header"
+      onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'>📄 Place your <strong>header.png</strong> in the same folder</div>'" />
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <div class="invoice-title">TAX INVOICE</div>
+
+    <!-- Invoice No & Date -->
+    <div class="invoice-meta">
+      <div>
+        Invoice No.:&nbsp;
+        <input type="text" id="inv-no" value="INV/50/26-27" />
+      </div>
+      <div>
+        Invoice Date:&nbsp;
+        <input type="text" id="inv-date" value="2026-05-02" style="width:130px;" />
+      </div>
+    </div>
+
+    <!-- Party Table -->
+    <table class="party-table">
+      <tr>
+        <th style="width:50%;">Details of Service Provider</th>
+        <th style="width:50%;">Details of Service Received</th>
+      </tr>
+      <tr>
+        <td>
+          <table class="party-inner">
+            <tr><td class="lbl">GSTIN</td><td>:</td><td>37ADEFS2936G1ZY</td></tr>
+            <tr><td class="lbl">Name</td><td>:</td><td>SRINIDHI FINSOL # PSBL</td></tr>
+            <tr><td class="lbl" style="vertical-align:top;">Address</td><td>: </td><td>48 7 47 VEG MARKET LANE OPP SBI SRINAGAR</td></tr>
+            <tr><td class="lbl">State</td><td>:</td><td> Andhra Pradesh</td></tr>
+            <tr><td class="lbl">State Code</td><td>:</td><td> 37</td></tr>
+          </table>
+        </td>
+        <td>
+          <table class="party-inner">
+            <tr><td class="lbl">GSTIN</td><td>:</td><td> 37AABCB1518L1ZR</td></tr>
+            <tr><td class="lbl">Name</td><td>:</td><td> Bajaj Finance Limited</td></tr>
+            <tr><td class="lbl" style="vertical-align:top;">Address</td><td>:</td><td> Door No 32-9-17, Near Jammichettu Centre, Mogalrajpuram, Vijayawada, Andhra Pradesh, 520010</td></tr>
+            <tr><td class="lbl">State</td><td>:</td><td>ANDHRA PRADESH</td></tr>
+            <tr><td class="lbl">State Code</td><td>:</td><td> 37</td></tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Nature / HSN -->
+    <div class="nature-section">
+      <strong>Nature of Goods/ Service:</strong> DSA/TRAILING &amp; RECOVERY/OEW PAYOUT COMMISSION
+      &nbsp;&nbsp;&nbsp;
+      <strong>HSN/ SAC code:</strong> 997159
+    </div>
+
+    <!-- Line Items Table -->
+    <table class="inv-table" id="inv-table">
+      <thead>
+        <tr>
+          <th rowspan="2" style="text-align:left; width:190px;">Particular</th>
+          <th rowspan="2" style="width:100px;">Transaction<br>Amount (₹)</th>
+          <th colspan="2">CGST</th>
+          <th colspan="2">SGST</th>
+          <th colspan="2">IGST</th>
+          <th rowspan="2" class="action-col" style="width:36px;"></th>
+        </tr>
+        <tr>
+          <th style="width:42px;">Rate</th>
+          <th style="width:80px;">Amount (₹)</th>
+          <th style="width:42px;">Rate</th>
+          <th style="width:80px;">Amount (₹)</th>
+          <th style="width:42px;">Rate</th>
+          <th style="width:80px;">Amount (₹)</th>
+        </tr>
+      </thead>
+      <tbody id="line-items">
+        <!-- rows injected by JS -->
+      </tbody>
+      <tfoot id="total-row">
+        <!-- total injected by JS -->
+      </tfoot>
+    </table>
+
+    <!-- Add Row -->
+    <div class="add-row-area">
+      <button class="add-row-btn" onclick="addRow()">+ Add Particular</button>
+    </div>
+
+    <!-- Payable Block -->
+    <div class="payable-block" id="payable-block">
+      <!-- injected by JS -->
+    </div>
+
+    <!-- Signatory -->
+    <div class="signatory">
+      <div class="firm-name">FOR (SRINIDHI FINSOL # PSBL)</div>
+      <div style="margin-top:44px;">AUTHORIZED SIGNATORY</div>
+    </div>
+
+  </div><!-- end body -->
+
+  <!-- FOOTER IMAGE -->
+  <div class="footer-img">
+    <img src="footer.png" alt="Footer"
+      onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'>📄 Place your <strong>footer.png</strong> in the same folder</div>'" />
+  </div>
+
+</div><!-- end page -->
+
+<script>
+  // ── INITIAL DATA ──
+  const defaultRows = [
+    { particular: 'Business Payout for the month of March 2025', txn: 66250, cgst: 9, sgst: 9, igst: 0 }
+  ];
+
+  let rows = [];
+  let rowId = 0;
+
+  function init() {
+    defaultRows.forEach(r => addRow(r));
+  }
+
+  function addRow(data = {}) {
+    const id = rowId++;
+    rows.push({ id, particular: data.particular || '', txn: data.txn || '', cgst: data.cgst !== undefined ? data.cgst : 9, sgst: data.sgst !== undefined ? data.sgst : 9, igst: data.igst !== undefined ? data.igst : 0 });
+    renderRows();
+  }
+
+  function deleteRow(id) {
+    if (rows.length === 1) { alert('At least one particular is required.'); return; }
+    rows = rows.filter(r => r.id !== id);
+    renderRows();
+  }
+
+  function getVal(id, field) {
+    const r = rows.find(r => r.id === id);
+    return r ? r[field] : '';
+  }
+
+  function updateField(id, field, value) {
+    const r = rows.find(r => r.id === id);
+    if (r) {
+      r[field] = field === 'particular' ? value : (parseFloat(value) || 0);
+      recalc();
+    }
+  }
+
+  function renderRows() {
+    const tbody = document.getElementById('line-items');
+    tbody.innerHTML = '';
+    rows.forEach(r => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="particular-td"><input type="text" value="${escHtml(r.particular)}" placeholder="Enter particular..." oninput="updateField(${r.id},'particular',this.value)" /></td>
+        <td class="amt-td"><input type="number" value="${r.txn}" min="0" step="0.01" placeholder="0.00" oninput="updateField(${r.id},'txn',this.value)" /></td>
+        <td><input type="number" value="${r.cgst}" min="0" max="100" step="0.5" oninput="updateField(${r.id},'cgst',this.value)" /></td>
+        <td class="calc-td" id="cgst-amt-${r.id}">0.00</td>
+        <td><input type="number" value="${r.sgst}" min="0" max="100" step="0.5" oninput="updateField(${r.id},'sgst',this.value)" /></td>
+        <td class="calc-td" id="sgst-amt-${r.id}">0.00</td>
+        <td><input type="number" value="${r.igst}" min="0" max="100" step="0.5" oninput="updateField(${r.id},'igst',this.value)" /></td>
+        <td class="calc-td" id="igst-amt-${r.id}">0.00</td>
+        <td class="action-td action-col"><button class="del-btn" onclick="deleteRow(${r.id})">✕</button></td>
+      `;
+      tbody.appendChild(tr);
+    });
+    recalc();
+  }
+
+  function recalc() {
+    let totTxn = 0, totCgst = 0, totSgst = 0, totIgst = 0;
+
+    rows.forEach(r => {
+      const txn  = parseFloat(r.txn)  || 0;
+      const cgst = parseFloat(r.cgst) || 0;
+      const sgst = parseFloat(r.sgst) || 0;
+      const igst = parseFloat(r.igst) || 0;
+
+      const cgstAmt = round2(txn * cgst / 100);
+      const sgstAmt = round2(txn * sgst / 100);
+      const igstAmt = round2(txn * igst / 100);
+
+      totTxn  += txn;
+      totCgst += cgstAmt;
+      totSgst += sgstAmt;
+      totIgst += igstAmt;
+
+      setEl('cgst-amt-'+r.id, fmt(cgstAmt));
+      setEl('sgst-amt-'+r.id, fmt(sgstAmt));
+      setEl('igst-amt-'+r.id, fmt(igstAmt));
+    });
+
+    const grandTotal = round2(totTxn + totCgst + totSgst + totIgst);
+
+    // Total row
+    const tfoot = document.getElementById('total-row');
+    tfoot.innerHTML = `
+      <tr class="total-row">
+        <td class="lbl-td">Total</td>
+        <td class="amt-td">₹ ${fmt(totTxn)}</td>
+        <td colspan="2" class="amt-td">CGST: ₹ ${fmt(totCgst)}</td>
+        <td colspan="2" class="amt-td">SGST: ₹ ${fmt(totSgst)}</td>
+        <td colspan="2" class="amt-td">IGST: ₹ ${fmt(totIgst)}</td>
+        <td class="action-col"></td>
+      </tr>
+    `;
+
+    // Payable block
+    document.getElementById('payable-block').innerHTML = `
+      <div class="payable-line">
+        Payable Amount &nbsp;–&nbsp;
+        ₹ ${fmt(totTxn)} + ₹ ${fmt(totCgst)} + ₹ ${fmt(totSgst)} + ₹ ${fmt(totIgst)}
+        &nbsp;=&nbsp; <span style="font-size:13.5px;">₹ ${fmt(grandTotal)}</span>
+      </div>
+      <div class="words-line">
+        Rupees in words – ${numberToWords(Math.round(grandTotal))} ONLY.
+      </div>
+    `;
+  }
+
+  // ── HELPERS ──
+  function round2(n) { return Math.round(n * 100) / 100; }
+  function fmt(n) {
+    return parseFloat(n).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  function setEl(id, val) { const el = document.getElementById(id); if (el) el.textContent = '₹ ' + val; }
+  function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  // ── NUMBER TO WORDS (Indian system) ──
+  function numberToWords(n) {
+    if (n === 0) return 'ZERO';
+    const ones = ['','ONE','TWO','THREE','FOUR','FIVE','SIX','SEVEN','EIGHT','NINE',
+                  'TEN','ELEVEN','TWELVE','THIRTEEN','FOURTEEN','FIFTEEN','SIXTEEN',
+                  'SEVENTEEN','EIGHTEEN','NINETEEN'];
+    const tens = ['','','TWENTY','THIRTY','FORTY','FIFTY','SIXTY','SEVENTY','EIGHTY','NINETY'];
+
+    function words(num) {
+      if (num === 0) return '';
+      if (num < 20) return ones[num] + ' ';
+      if (num < 100) return tens[Math.floor(num/10)] + (num%10 ? ' ' + ones[num%10] : '') + ' ';
+      if (num < 1000) return ones[Math.floor(num/100)] + ' HUNDRED ' + words(num%100);
+      if (num < 100000) return words(Math.floor(num/1000)) + 'THOUSAND ' + words(num%1000);
+      if (num < 10000000) return words(Math.floor(num/100000)) + 'LAKH ' + words(num%100000);
+      return words(Math.floor(num/10000000)) + 'CRORE ' + words(num%10000000);
+    }
+    return words(n).trim().replace(/\s+/g,' ');
+  }
+
+  // Format date for display in invoice meta
+  document.getElementById('inv-date').addEventListener('change', function() {
+    // just keep the input; print will show formatted value
+  });
+
+  init();
+</script>
+</body>
+</html>
