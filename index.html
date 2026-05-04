@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srinidi Finsol – Franchise of Bajaj Finserv</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --blue: #1a3a6b;
+    --gold: #d4a017;
+    --gold-light: #f0c040;
+    --cream: #fdf8ef;
+    --white: #ffffff;
+    --red: #c0392b;
+    --bajaj-blue: #003087;
+    --text: #1c1c2e;
+    --muted: #6b7280;
+    --border: #e5dfd3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ───── HEADER ───── */
+  header {
+    background: var(--navy);
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+
+  .top-bar {
+    background: var(--gold);
+    text-align: center;
+    font-size: 0.75rem;
+    padding: 6px 20px;
+    color: var(--navy);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 60px;
+    gap: 20px;
+  }
+
+  .logo-wrap {
+    display: flex; align-items: center; gap: 14px;
+  }
+
+  .logo-icon {
+    width: 46px; height: 46px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 900; color: var(--navy);
+    font-family: 'Playfair Display', serif;
+    box-shadow: 0 4px 15px rgba(212,160,23,0.4);
+  }
+
+  .logo-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem; color: var(--white); line-height: 1;
+  }
+
+  .logo-text span {
+    font-size: 0.68rem; color: var(--gold); letter-spacing: 0.12em;
+    text-transform: uppercase; font-weight: 500;
+  }
+
+  .bajaj-badge {
+    background: var(--bajaj-blue);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  nav ul {
+    display: flex; gap: 30px; list-style: none;
+  }
+
+  nav ul a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  nav ul a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 9px 20px;
+    border-radius: 8px;
+    font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  /* ───── HERO ───── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, #1e4fa0 100%);
+    padding: 90px 60px 80px;
+    display: flex; align-items: center; gap: 60px;
+    position: relative; overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(212,160,23,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -100px; left: 200px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-content { flex: 1; position: relative; z-index: 2; }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(212,160,23,0.2);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.4rem;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+
+  .hero h2 em { color: var(--gold); font-style: normal; }
+
+  .hero p {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 36px;
+  }
+
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy);
+    padding: 13px 28px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 20px rgba(212,160,23,0.4);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212,160,23,0.5); }
+
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,0.4);
+    color: white;
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(212,160,23,0.1); }
+
+  .hero-stats {
+    display: flex; gap: 30px; margin-top: 40px;
+  }
+
+  .stat { text-align: left; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; color: var(--gold); font-weight: 900; line-height: 1;
+  }
+  .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+  /* Hero card */
+  .hero-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 36px;
+    min-width: 340px;
+    position: relative; z-index: 2;
+  }
+
+  .hero-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: white; font-size: 1.2rem; margin-bottom: 22px;
+  }
+
+  .hero-card h3 span { color: var(--gold); }
+
+  .quick-loan { display: flex; flex-direction: column; gap: 14px; }
+
+  .quick-loan label {
+    font-size: 0.78rem; color: rgba(255,255,255,0.6);
+    text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 5px;
+  }
+
+  .quick-loan input, .quick-loan select {
+    width: 100%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 11px 14px;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .quick-loan input::placeholder { color: rgba(255,255,255,0.35); }
+  .quick-loan input:focus, .quick-loan select:focus { border-color: var(--gold); }
+
+  .quick-loan select option { background: var(--navy); color: white; }
+
+  .quick-loan button {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy);
+    border: none;
+    border-radius: 8px;
+    padding: 13px;
+    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin-top: 6px;
+  }
+  .quick-loan button:hover { transform: translateY(-1px); }
+
+  /* ───── SECTION COMMON ───── */
+  section { padding: 80px 60px; }
+
+  .section-tag {
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; color: var(--navy); line-height: 1.2; margin-bottom: 14px;
+  }
+
+  .section-sub {
+    color: var(--muted); font-size: 1rem; line-height: 1.7; max-width: 560px;
+  }
+
+  .section-head { margin-bottom: 50px; }
+
+  /* ───── PRODUCTS ───── */
+  .products { background: white; }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 24px;
+  }
+
+  .product-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px 26px;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(10,22,40,0.12);
+    border-color: var(--gold);
+  }
+
+  .product-card:hover::before { opacity: 1; }
+
+  .prod-icon {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin-bottom: 18px;
+    box-shadow: 0 6px 20px rgba(10,22,40,0.2);
+  }
+
+  .product-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; color: var(--navy); margin-bottom: 8px;
+  }
+
+  .product-card p {
+    font-size: 0.84rem; color: var(--muted); line-height: 1.6; margin-bottom: 14px;
+  }
+
+  .prod-rate {
+    font-size: 0.8rem; color: var(--gold); font-weight: 700;
+    background: rgba(212,160,23,0.1); display: inline-block;
+    padding: 4px 10px; border-radius: 20px;
+  }
+
+  /* ───── EMI CALCULATOR ───── */
+  .emi-section {
+    background: linear-gradient(135deg, var(--navy) 0%, #0f2040 100%);
+  }
+
+  .emi-section .section-title { color: white; }
+  .emi-section .section-sub { color: rgba(255,255,255,0.6); }
+  .emi-section .section-tag { color: var(--gold); }
+
+  .emi-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+
+  .emi-inputs { padding: 44px; }
+
+  .emi-inputs h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; color: white; margin-bottom: 30px;
+  }
+
+  .input-group { margin-bottom: 28px; }
+
+  .input-group label {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.82rem; color: rgba(255,255,255,0.6);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 10px; font-weight: 600;
+  }
+
+  .input-group label span {
+    color: var(--gold);
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform: none; letter-spacing: 0;
+  }
+
+  .input-group input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%; height: 5px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 3px;
+    outline: none;
+  }
+
+  .input-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(212,160,23,0.5);
+    border: 3px solid white;
+  }
+
+  .range-labels {
+    display: flex; justify-content: space-between;
+    font-size: 0.7rem; color: rgba(255,255,255,0.35);
+    margin-top: 6px;
+  }
+
+  /* EMI Results */
+  .emi-results {
+    background: linear-gradient(135deg, rgba(212,160,23,0.12), rgba(212,160,23,0.04));
+    padding: 44px;
+    border-left: 1px solid rgba(212,160,23,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .emi-main {
+    text-align: center; margin-bottom: 36px;
+  }
+
+  .emi-main p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .emi-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem; color: var(--gold); font-weight: 900;
+    line-height: 1;
+  }
+
+  .emi-amount sub {
+    font-size: 1.4rem; vertical-align: bottom; margin-right: 4px;
+  }
+
+  .emi-breakdown {
+    width: 100%;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+
+  .breakdown-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .breakdown-row span:first-child {
+    font-size: 0.82rem; color: rgba(255,255,255,0.55);
+  }
+
+  .breakdown-row span:last-child {
+    font-size: 0.95rem; color: white; font-weight: 600;
+  }
+
+  /* Donut Chart */
+  .donut-wrap {
+    margin: 28px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .donut-wrap svg { transform: rotate(-90deg); }
+
+  .donut-center {
+    position: absolute;
+    text-align: center;
+  }
+
+  .donut-center p { font-size: 0.65rem; color: rgba(255,255,255,0.4); }
+  .donut-center strong { display: block; font-size: 1rem; color: var(--gold); font-family: 'Playfair Display', serif; }
+
+  .donut-legend {
+    display: flex; gap: 20px; font-size: 0.75rem;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.6); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  /* ───── WHY US ───── */
+  .why-us { background: var(--cream); }
+
+  .why-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  }
+
+  .why-card {
+    padding: 30px 24px;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .why-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(10,22,40,0.1); }
+
+  .why-icon {
+    font-size: 2.4rem; margin-bottom: 16px;
+  }
+
+  .why-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; color: var(--navy); margin-bottom: 8px;
+  }
+
+  .why-card p {
+    font-size: 0.84rem; color: var(--muted); line-height: 1.6;
+  }
+
+  /* ───── TESTIMONIALS ───── */
+  .testimonials { background: white; }
+
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+
+  .testi-card {
+    padding: 32px;
+    background: var(--cream);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+  }
+
+  .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 14px; }
+
+  .testi-card p {
+    font-size: 0.9rem; color: var(--text); line-height: 1.7;
+    font-style: italic; margin-bottom: 20px;
+  }
+
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+
+  .testi-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-weight: 700; font-size: 0.9rem;
+  }
+
+  .testi-author h4 { font-size: 0.88rem; color: var(--navy); font-weight: 700; }
+  .testi-author span { font-size: 0.75rem; color: var(--muted); }
+
+  /* ───── CONTACT ───── */
+  .contact {
+    background: var(--navy);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: center;
+  }
+
+  .contact h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; color: white; margin-bottom: 14px;
+  }
+
+  .contact h2 em { color: var(--gold); font-style: normal; }
+
+  .contact > div:first-child p {
+    color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.7; margin-bottom: 28px;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 14px; }
+
+  .contact-item {
+    display: flex; align-items: center; gap: 12px;
+    color: rgba(255,255,255,0.7); font-size: 0.9rem;
+  }
+
+  .contact-icon {
+    width: 38px; height: 38px;
+    background: rgba(212,160,23,0.15);
+    border: 1px solid rgba(212,160,23,0.3);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+
+  .contact-form { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 36px; }
+
+  .contact-form h3 {
+    font-family: 'Playfair Display', serif;
+    color: white; font-size: 1.3rem; margin-bottom: 24px;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .form-group { margin-bottom: 16px; }
+
+  .form-group label {
+    display: block; font-size: 0.75rem; color: rgba(255,255,255,0.5);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 7px;
+  }
+
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 11px 14px;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+  .form-group select option { background: var(--navy); }
+
+  .form-submit {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy);
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 20px rgba(212,160,23,0.3);
+  }
+
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212,160,23,0.45); }
+
+  /* ───── FOOTER ───── */
+  footer {
+    background: #060e1c;
+    padding: 50px 60px 30px;
+  }
+
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px;
+  }
+
+  .footer-brand p {
+    font-size: 0.84rem; color: rgba(255,255,255,0.4); line-height: 1.7; margin: 14px 0 20px;
+  }
+
+  .footer-col h4 {
+    color: white; font-size: 0.88rem; font-weight: 700; margin-bottom: 16px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+
+  .footer-col ul a {
+    color: rgba(255,255,255,0.45); text-decoration: none;
+    font-size: 0.83rem; transition: color 0.2s;
+  }
+
+  .footer-col ul a:hover { color: var(--gold); }
+
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin-bottom: 24px; }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.78rem; color: rgba(255,255,255,0.3);
+  }
+
+  .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--gold); }
+
+  .bajaj-footer {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(0,48,135,0.3);
+    border: 1px solid rgba(0,48,135,0.5);
+    padding: 6px 14px; border-radius: 8px;
+    font-size: 0.73rem; color: rgba(255,255,255,0.5);
+  }
+
+  /* ───── FLOATING CALL BTN ───── */
+  .float-call {
+    position: fixed; bottom: 28px; right: 28px; z-index: 999;
+    width: 58px; height: 58px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 8px 25px rgba(212,160,23,0.5);
+    text-decoration: none;
+    animation: pulse 2.5s infinite;
+    cursor: pointer;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 8px 25px rgba(212,160,23,0.5); }
+    50% { box-shadow: 0 8px 40px rgba(212,160,23,0.8); }
+  }
+
+  /* ───── ANIMATIONS ───── */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in:nth-child(2) { animation-delay: 0.2s; }
+  .fade-in:nth-child(3) { animation-delay: 0.3s; }
+  .fade-in:nth-child(4) { animation-delay: 0.4s; }
+  .fade-in:nth-child(5) { animation-delay: 0.5s; }
+
+  /* ───── RESPONSIVE ───── */
+  @media (max-width: 900px) {
+    nav { padding: 12px 20px; }
+    nav ul { display: none; }
+    section { padding: 60px 20px; }
+    .hero { flex-direction: column; padding: 50px 20px; }
+    .hero h2 { font-size: 2.2rem; }
+    .hero-card { min-width: unset; width: 100%; }
+    .emi-wrapper { grid-template-columns: 1fr; }
+    .emi-results { border-left: none; border-top: 1px solid rgba(212,160,23,0.2); }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .contact { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { flex-wrap: wrap; }
+  }
+
+  /* ───── TOAST ───── */
+  .toast {
+    position: fixed; bottom: 90px; right: 28px; z-index: 1000;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    transform: translateX(200%);
+    transition: transform 0.4s;
+    box-shadow: 0 8px 30px rgba(212,160,23,0.4);
+  }
+  .toast.show { transform: translateX(0); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  🎉 Special Offer: Personal Loan @ 10.49% p.a. | Home Loan @ 8.50% p.a. | Call Now: +91 99999 12345
+</div>
+
+<!-- HEADER -->
+<header>
+  <nav>
+    <div class="logo-wrap">
+      <div class="logo-icon">SF</div>
+      <div class="logo-text">
+        <h1>Srinidi Finsol</h1>
+        <span>Franchise of Bajaj Finserv</span>
+      </div>
+      <div class="bajaj-badge">BAJAJ FINSERV</div>
+    </div>
+    <ul>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#emi">EMI Calculator</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Apply Now</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-tag">🏆 Trusted Bajaj Finserv Partner · Hyderabad</div>
+    <h2>Smart <em>Finance</em><br>Solutions for<br>Every Dream</h2>
+    <p>From home loans to business finance, we bring you the power of Bajaj Finserv with personalised service. Quick approvals, minimal documentation, and competitive rates.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Apply for Loan →</a>
+      <a href="#emi" class="btn-outline">Calculate EMI</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">10K+</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">₹500Cr+</div>
+        <div class="stat-label">Loans Disbursed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">24 Hrs</div>
+        <div class="stat-label">Quick Disbursal</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-card">
+    <h3>Quick Loan <span>Enquiry</span></h3>
+    <div class="quick-loan">
+      <div>
+        <label>Full Name</label>
+        <input type="text" placeholder="Your full name" />
+      </div>
+      <div>
+        <label>Mobile Number</label>
+        <input type="tel" placeholder="+91 XXXXX XXXXX" />
+      </div>
+      <div>
+        <label>Loan Type</label>
+        <select>
+          <option>Personal Loan</option>
+          <option>Home Loan</option>
+          <option>Business Loan</option>
+          <option>Vehicle Loan</option>
+          <option>Education Loan</option>
+          <option>Loan Against Property</option>
+        </select>
+      </div>
+      <div>
+        <label>Loan Amount Required</label>
+        <input type="text" placeholder="e.g. ₹5,00,000" />
+      </div>
+      <button onclick="showToast('✅ Enquiry submitted! We\'ll call you within 1 hour.')">Get Free Consultation →</button>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-head">
+    <div class="section-tag">Our Financial Products</div>
+    <h2 class="section-title">Complete Range of<br>Bajaj Finserv Loans</h2>
+    <p class="section-sub">Get access to the entire Bajaj Finserv product suite with expert guidance and doorstep service from Srinidi Finsol.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card fade-in">
+      <div class="prod-icon">🏠</div>
+      <h3>Home Loan</h3>
+      <p>Fulfil your dream of owning a home with up to ₹15 Cr loan at attractive rates.</p>
+      <div class="prod-rate">From 8.50% p.a.</div>
+    </div>
+    <div class="product-card fade-in">
+      <div class="prod-icon">💳</div>
+      <h3>Personal Loan</h3>
+      <p>Instant personal loans up to ₹40 Lakhs with minimal documents and fast approval.</p>
+      <div class="prod-rate">From 10.49% p.a.</div>
+    </div>
+    <div class="product-card fade-in">
+      <div class="prod-icon">🏢</div>
+      <h3>Business Loan</h3>
+      <p>Fuel your business growth with unsecured loans up to ₹80 Lakhs for SMEs & MSMEs.</p>
+      <div class="prod-rate">From 14% p.a.</div>
+    </div>
+    <div class="product-card fade-in">
+      <div class="prod-icon">🚗</div>
+      <h3>Vehicle Loan</h3>
+      <p>New & used car loans, two-wheeler finance with up to 90% funding on-road price.</p>
+      <div class="prod-rate">From 8.99% p.a.</div>
+    </div>
+    <div class="product-card fade-in">
+      <div class="prod-icon">🎓</div>
+      <h3>Education Loan</h3>
+      <p>Finance higher education in India and abroad with flexible repayment options.</p>
+      <div class="prod-rate">From 9.5% p.a.</div>
+    </div>
+    <div class="product-card fade-in">
+      <div class="prod-icon">🏗️</div>
+      <h3>Loan Against Property</h3>
+      <p>Unlock your property's value with loans up to ₹5 Cr. Residential & commercial.</p>
+      <div class="prod-rate">From 9% p.a.</div>
+    </div>
+    <div class="product-card fade-in">
+      <div class="prod-icon">💰</div>
+      <h3>Fixed Deposits</h3>
+      <p>Grow your savings with Bajaj Finance FDs offering up to 8.60% interest p.a.</p>
+      <div class="prod-rate">Up to 8.60% p.a.</div>
+    </div>
+    <div class="product-card fade-in">
+      <div class="prod-icon">🛡️</div>
+      <h3>Insurance</h3>
+      <p>Life, health, and general insurance products from leading providers through Bajaj.</p>
+      <div class="prod-rate">Best Premium Rates</div>
+    </div>
+  </div>
+</section>
+
+<!-- EMI CALCULATOR -->
+<section class="emi-section" id="emi">
+  <div class="section-head">
+    <div class="section-tag">Financial Tools</div>
+    <h2 class="section-title">EMI Calculator</h2>
+    <p class="section-sub">Plan your loan repayment easily. Adjust the sliders to see your monthly EMI and complete cost breakdown instantly.</p>
+  </div>
+
+  <div class="emi-wrapper">
+    <div class="emi-inputs">
+      <h3>Loan Parameters</h3>
+
+      <div class="input-group">
+        <label>Loan Amount <span id="amt-display">₹5,00,000</span></label>
+        <input type="range" id="loanAmt" min="50000" max="10000000" step="50000" value="500000" oninput="calcEMI()">
+        <div class="range-labels"><span>₹50K</span><span>₹1 Cr</span></div>
+      </div>
+
+      <div class="input-group">
+        <label>Interest Rate (per annum) <span id="rate-display">10.5%</span></label>
+        <input type="range" id="intRate" min="7" max="24" step="0.1" value="10.5" oninput="calcEMI()">
+        <div class="range-labels"><span>7%</span><span>24%</span></div>
+      </div>
+
+      <div class="input-group">
+        <label>Loan Tenure <span id="tenure-display">36 Months</span></label>
+        <input type="range" id="tenure" min="6" max="360" step="6" value="36" oninput="calcEMI()">
+        <div class="range-labels"><span>6 Months</span><span>30 Years</span></div>
+      </div>
+
+      <div style="padding: 16px 20px; background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.2); border-radius: 12px; margin-top: 10px;">
+        <p style="font-size:0.75rem; color: rgba(255,255,255,0.5); margin-bottom:4px;">💡 Tip</p>
+        <p style="font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height:1.6;">A higher down payment reduces your EMI significantly. Contact Srinidi Finsol for personalised rate offers from Bajaj Finserv.</p>
+      </div>
+    </div>
+
+    <div class="emi-results">
+      <div class="emi-main">
+        <p>Monthly EMI</p>
+        <div class="emi-amount">
+          <sub>₹</sub><span id="emi-val">16,134</span>
+        </div>
+      </div>
+
+      <div class="donut-wrap">
+        <svg width="150" height="150" viewBox="0 0 150 150">
+          <circle cx="75" cy="75" r="60" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="22"/>
+          <circle id="principal-arc" cx="75" cy="75" r="60" fill="none" stroke="#1a3a6b" stroke-width="22"
+            stroke-dasharray="377" stroke-dashoffset="0" stroke-linecap="round"/>
+          <circle id="interest-arc" cx="75" cy="75" r="60" fill="none" stroke="#d4a017" stroke-width="22"
+            stroke-dasharray="377" stroke-dashoffset="0" stroke-linecap="round"/>
+        </svg>
+        <div class="donut-center">
+          <p>Total</p>
+          <strong id="total-display">₹5.81L</strong>
+        </div>
+      </div>
+
+      <div class="donut-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#1a3a6b"></div> Principal</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#d4a017"></div> Interest</div>
+      </div>
+
+      <div class="emi-breakdown" style="margin-top: 20px;">
+        <div class="breakdown-row">
+          <span>Principal Amount</span>
+          <span id="principal-val">₹5,00,000</span>
+        </div>
+        <div class="breakdown-row">
+          <span>Total Interest</span>
+          <span id="interest-val">₹80,824</span>
+        </div>
+        <div class="breakdown-row">
+          <span>Processing Fee (~1%)</span>
+          <span id="fee-val">₹5,000</span>
+        </div>
+        <div class="breakdown-row" style="border-color: rgba(212,160,23,0.3); background: rgba(212,160,23,0.07);">
+          <span style="color: var(--gold); font-weight:600;">Total Payable</span>
+          <span id="total-val" style="color: var(--gold); font-weight: 700;">₹5,85,824</span>
+        </div>
+        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
+          style="margin-top:14px; width:100%; padding:13px; background: linear-gradient(135deg,var(--gold),var(--gold-light)); border:none; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:700; color:var(--navy); cursor:pointer; transition: transform 0.2s;"
+          onmouseover="this.style.transform='translateY(-2px)'"
+          onmouseout="this.style.transform='translateY(0)'">
+          Apply for This Loan →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="why">
+  <div class="section-head">
+    <div class="section-tag">Why Choose Us</div>
+    <h2 class="section-title">The Srinidi Finsol<br>Advantage</h2>
+    <p class="section-sub">We combine Bajaj Finserv's power with personal attention and local expertise to serve you better.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <h3>Same-Day Approval</h3>
+      <p>Get your personal loan approved within hours. Digital process with minimal paperwork.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🏦</div>
+      <h3>Bajaj Finserv Trust</h3>
+      <p>Backed by India's most trusted NBFC with over 66 million customers nationwide.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📞</div>
+      <h3>Doorstep Service</h3>
+      <p>Our representatives visit you at home or office — zero hassle, complete convenience.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💎</div>
+      <h3>Best-in-Class Rates</h3>
+      <p>Competitive interest rates with transparent processing fees. No hidden charges ever.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📱</div>
+      <h3>Digital Process</h3>
+      <p>Paperless KYC, online application tracking, and EMI via auto-debit — 100% digital.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🤝</div>
+      <h3>Personalised Advice</h3>
+      <p>Expert financial advisors guide you to choose the best product for your needs.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔒</div>
+      <h3>100% Secure</h3>
+      <p>Bank-grade data security. Your personal and financial information stays protected.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🌟</div>
+      <h3>Post-Loan Support</h3>
+      <p>Dedicated relationship manager assigned throughout your loan tenure for all queries.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="section-head">
+    <div class="section-tag">Customer Stories</div>
+    <h2 class="section-title">What Our Clients Say</h2>
+    <p class="section-sub">Real experiences from real customers who trusted Srinidi Finsol for their financial needs.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Got my home loan approved in just 3 days! The team at Srinidi Finsol handled everything seamlessly. Bajaj Finserv's rate was the best I found anywhere in Hyderabad."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">RK</div>
+        <div>
+          <h4>Rajesh Kumar</h4>
+          <span>Home Loan Customer · Banjara Hills</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Needed a business loan urgently and they disbursed ₹25 Lakhs within 48 hours. Absolutely professional service. Highly recommend to all business owners!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">SP</div>
+        <div>
+          <h4>Sunita Patel</h4>
+          <span>Business Loan Customer · Jubilee Hills</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"The EMI calculator on their site helped me plan perfectly. Personal loan at 10.99% was far better than my bank. The process was fully digital and took just 2 hours!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">AM</div>
+        <div>
+          <h4>Arun Mehta</h4>
+          <span>Personal Loan Customer · Gachibowli</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div>
+    <div class="section-tag" style="color: var(--gold);">Get in Touch</div>
+    <h2>Let's Talk About<br>Your <em>Financial Goals</em></h2>
+    <p>Our expert advisors are available 6 days a week to help you find the perfect financial product for your needs.</p>
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <span>Hyderabad, Telangana – Serving Pan-Hyderabad</span>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <span>+91 99999 12345 | +91 88888 67890</span>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <span>info@srinidfinsol.in</span>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <span>Mon – Sat: 9:00 AM – 7:00 PM</span>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form">
+    <h3>Apply Now — Free Consultation</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Raj" />
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Kumar" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Mobile Number</label>
+      <input type="tel" placeholder="+91 99999 12345" />
+    </div>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" placeholder="raj@email.com" />
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Loan Type</label>
+        <select>
+          <option>Personal Loan</option>
+          <option>Home Loan</option>
+          <option>Business Loan</option>
+          <option>Vehicle Loan</option>
+          <option>Education Loan</option>
+          <option>Loan Against Property</option>
+          <option>Fixed Deposit</option>
+          <option>Insurance</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Loan Amount</label>
+        <input type="text" placeholder="₹5,00,000" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Message (optional)</label>
+      <textarea rows="3" placeholder="Any specific requirements or questions..."></textarea>
+    </div>
+    <button class="form-submit" onclick="showToast('🎉 Application submitted! We\'ll contact you within 1 hour.')">Submit Application →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-wrap" style="margin-bottom: 0;">
+        <div class="logo-icon">SF</div>
+        <div class="logo-text">
+          <h1 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:white;">Srinidi Finsol</h1>
+          <span style="font-size:0.65rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;">Franchise of Bajaj Finserv</span>
+        </div>
+      </div>
+      <p>Your trusted Bajaj Finserv franchise in Hyderabad. We are committed to making finance simple, accessible, and affordable for every individual and business.</p>
+      <div class="bajaj-footer">🏛️ Authorised Franchise Partner of Bajaj Finserv Ltd.</div>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#">Personal Loan</a></li>
+        <li><a href="#">Home Loan</a></li>
+        <li><a href="#">Business Loan</a></li>
+        <li><a href="#">Vehicle Loan</a></li>
+        <li><a href="#">Education Loan</a></li>
+        <li><a href="#">Loan Against Property</a></li>
+        <li><a href="#">Fixed Deposits</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="#emi">EMI Calculator</a></li>
+        <li><a href="#">Eligibility Check</a></li>
+        <li><a href="#">Compare Loans</a></li>
+        <li><a href="#">Interest Rates</a></li>
+        <li><a href="#">FD Calculator</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Srinidi Finsol</a></li>
+        <li><a href="#">About Bajaj Finserv</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <p>© 2025 Srinidi Finsol. Franchise of Bajaj Finserv. All rights reserved.</p>
+    <p>*Interest rates are indicative and subject to change. T&C apply. <a href="#">Disclaimer</a></p>
+  </div>
+</footer>
+
+<!-- FLOAT CALL -->
+<a href="tel:+919999912345" class="float-call" title="Call Now">📞</a>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+  function fmtINR(n) {
+    if (n >= 10000000) return '₹' + (n/10000000).toFixed(1) + 'Cr';
+    if (n >= 100000)   return '₹' + (n/100000).toFixed(1) + 'L';
+    if (n >= 1000)     return '₹' + (n/1000).toFixed(1) + 'K';
+    return '₹' + n;
+  }
+
+  function fmtFull(n) {
+    return '₹' + Math.round(n).toLocaleString('en-IN');
+  }
+
+  function calcEMI() {
+    const P = parseFloat(document.getElementById('loanAmt').value);
+    const annualRate = parseFloat(document.getElementById('intRate').value);
+    const tenureMonths = parseInt(document.getElementById('tenure').value);
+
+    // Display labels
+    document.getElementById('amt-display').textContent = fmtFull(P);
+    document.getElementById('rate-display').textContent = annualRate.toFixed(1) + '%';
+    const yrs = Math.floor(tenureMonths / 12);
+    const mos = tenureMonths % 12;
+    document.getElementById('tenure-display').textContent =
+      (yrs > 0 ? yrs + ' Yr' + (yrs > 1 ? 's' : '') + ' ' : '') +
+      (mos > 0 ? mos + ' Mo' : '');
+
+    const r = annualRate / 12 / 100;
+    const n = tenureMonths;
+    let emi;
+
+    if (r === 0) {
+      emi = P / n;
+    } else {
+      emi = P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+    }
+
+    const totalPayable = emi * n;
+    const totalInterest = totalPayable - P;
+    const fee = P * 0.01;
+
+    document.getElementById('emi-val').textContent = Math.round(emi).toLocaleString('en-IN');
+    document.getElementById('principal-val').textContent = fmtFull(P);
+    document.getElementById('interest-val').textContent = fmtFull(totalInterest);
+    document.getElementById('fee-val').textContent = fmtFull(fee);
+    document.getElementById('total-val').textContent = fmtFull(totalPayable + fee);
+    document.getElementById('total-display').textContent = fmtINR(Math.round(totalPayable));
+
+    // Donut
+    const circumference = 2 * Math.PI * 60;
+    const principalFrac = P / totalPayable;
+    const interestFrac = totalInterest / totalPayable;
+
+    const pLen = principalFrac * circumference;
+    const iLen = interestFrac * circumference;
+
+    const pArc = document.getElementById('principal-arc');
+    const iArc = document.getElementById('interest-arc');
+
+    pArc.setAttribute('stroke-dasharray', pLen + ' ' + (circumference - pLen));
+    pArc.setAttribute('stroke-dashoffset', 0);
+
+    iArc.setAttribute('stroke-dasharray', iLen + ' ' + (circumference - iLen));
+    iArc.setAttribute('stroke-dashoffset', -pLen);
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  // Initial calc
+  calcEMI();
+</script>
+</body>
+</html>
